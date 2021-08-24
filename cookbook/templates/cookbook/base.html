@@ -8,9 +8,9 @@
     </head>
     <body>
         <nav id="menu">
-            <a href="{% url 'home' %}"><img id="icon" src="{% static 'images/icon.png' %}"></a>
-            <a href="{% url 'recipe_index' %}">Recipes</a>
-            <a href="{% url 'menu_index' %}">Menus</a>
+            <a class="tabs" href="{% url 'home' %}"><img id="icon" src="{% static 'images/icon.png' %}"><p>Home</p></a>
+            <a class="tabs" href="{% url 'recipe_index' %}">Recipes</a>
+            <a class="tabs" href="{% url 'menu_index' %}">Menus</a>
         </nav>
         <div id="content">
             {% block content %}
