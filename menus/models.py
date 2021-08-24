@@ -3,6 +3,7 @@ from recipes.models import Recipe
 from collections import defaultdict
 from math import ceil
 from textwrap import TextWrapper
+from django.urls import reverse
 
 # Create your models here.
 class Menu(models.Model):
@@ -34,6 +35,9 @@ class Menu(models.Model):
 
     def __repr__(self):
         return "<{} with {} recipes>".format(self.name, self.recipes.count())
+
+    def get_absolute_url(self):
+        return reverse('menu-detail', kwargs={'pk': self.pk})
 
     def shopping_list(self, width=70):
         wrapper = TextWrapper(width=width)
