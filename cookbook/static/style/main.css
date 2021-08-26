@@ -1,37 +1,25 @@
-/* Importing fonts */
-/* @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
+/* || Importing fonts */
 @import url('https://fonts.googleapis.com/css2?family=Lora&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-/* Big containers */
+/* || Big containers */
 html, body {
     height: 100%;
     padding: 0;
     margin: 0;
-    /* font-family: 'Comfortaa', cursive; */
     font-family: 'Poppins', sans-serif;
 }
 body {
     display: flex;
     flex-direction: column;
-    /* background-color: #3f135a; */
     background-color: #0c0c1d;
     color: #d1deeb;
     justify-content: space-between;
-}
-nav {
-    flex-shrink: 0;
-    padding: 8px;
-    color: white;
-    /* background-color: #db35db; */
-    background-color: #17172e;
-    /* border-bottom: 1px solid #c5c5c5; */
 }
 #content{
     align-self: center;
     justify-self: center;
     width: 80%;
     padding: 8px;
-    /* text-align: center; */
 }
 footer {
     flex-shrink: 0;
@@ -40,9 +28,34 @@ footer {
     border-top: 4px hidden ;
 }
 
-/* Smaller items */
+
+/* || Nav stuff */
+nav {
+    flex-shrink: 0;
+    color: white;
+    background-color: #17172e;
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+}
+.tabs{
+    padding: 5px;
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    transition: all ease-in-out 400ms;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.tabs:hover{
+    background-color:#608ea3;
+}
+
+
+/* || Smaller items */
 li{
-    /* list-style-type: none; */
     padding: 0.5% 0%;
 }
 a{
@@ -53,10 +66,61 @@ a{
 #icon{
     height: 60px;
 }
-/* Headers */
+
+
+/* || Headers */
 h1, h2, h3{
     font-family: 'Lora', serif;
 }
 h1{
     font-size: 80px;
+}
+
+
+/* || Forms */
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input, select, textarea{
+    margin-bottom:25px;
+    border-radius:5px;
+    background:#959dc3;
+    border:none;
+    padding:0px 10px;
+    width:100%;
+    line-height:50px;
+    outline:none;
+    font-size: 1.5vmax;
+}
+
+textarea{
+    height:50px;
+}
+
+select::-webkit-scrollbar-track
+{
+  background-color: #ffffff00;
+}
+
+select::-webkit-scrollbar
+{
+  width: 1vmax;
+  background-color: #ffffff00;
+  margin: 1px;
+}
+
+select::-webkit-scrollbar-thumb
+{
+  background-color: #373a5c;
+  border-radius: 4px;
+}
+select {
+    scrollbar-color: #373a5c #ffffff00;
+    scrollbar-width: thin;
+}
+label{
+    font-size: 120%;
 }
