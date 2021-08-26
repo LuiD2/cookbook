@@ -3,6 +3,7 @@ from django.views import generic
 from menus.models import Menu
 from django.http import Http404
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.urls import reverse
 
 
 # Create your views here.
@@ -23,6 +24,14 @@ class MenuRecipeDetailView(generic.DetailView):
 
 
 class MenuCreateView(CreateView):
-    model = Menu
     template_name = 'menus/add_menu.html'
-    fields = ['name', 'recipes', 'servings']
+    model = Menu
+    fields = ['name', 'servings']
+
+    def form_valid(self, form):
+        self.object = form.save()
+        self.object.save()
+        return super(MenuCreateView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse('menu_detail', kwargs={'pk': self.pk})
