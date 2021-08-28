@@ -26,12 +26,11 @@ class MenuRecipeDetailView(generic.DetailView):
 class MenuCreateView(CreateView):
     template_name = 'menus/add_menu.html'
     model = Menu
-    fields = ['name', 'servings']
+    fields = ['name', 'recipes', 'servings']
 
     def form_valid(self, form):
-        self.object = form.save()
-        self.object.save()
-        return super(MenuCreateView, self).form_valid(form)
+        form.save()
+        return super().form_valid(form)
 
-    def get_success_url(self):
-        return reverse('menu_detail', kwargs={'pk': self.pk})
+
+
