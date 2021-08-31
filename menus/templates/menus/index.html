@@ -1,6 +1,8 @@
 {% extends 'cookbook/base.html' %}
 
 {% block content %}
+<a href="{% url 'add_menu' %}">Add a menu</a>
+
 <h1>Menus</h1>
 {% if menus %}
   <ul>
