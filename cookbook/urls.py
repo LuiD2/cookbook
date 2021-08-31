@@ -25,6 +25,7 @@ urlpatterns = [
     path('cookbook/', cookbook_views.HomeView.as_view(), name='home'),
     path('cookbook/recipes', recipe_views.IndexView.as_view(), name='recipe_index'),
     path('cookbook/recipes/<int:pk>', recipe_views.DetailView.as_view(), name='recipe_detail'),
+    path('cookbook/recipes/add',recipe_views.CreateView.as_view(), name='recipe_create'),
     path('cookbook/menus', menu_views.IndexView.as_view(), name='menu_index'),
     path('cookbook/menus/<int:pk>', menu_views.DetailView.as_view(), name='menu_detail'),
     path('cookbook/menus/<int:menuID>/recipes/<int:recipeID>', menu_views.MenuRecipeDetailView.as_view(), name='menu_recipe_detail'),

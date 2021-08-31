@@ -11,3 +11,8 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
     model = Recipe
     template_name = 'recipes/detail.html'
+
+class CreateView(generic.CreateView):
+    model = Recipe
+    template_name = 'recipes/add.html'
+    fields = ['name','source','servings','notes','tags']
