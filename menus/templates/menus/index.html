@@ -8,7 +8,7 @@
   <ul>
     {% for menu in menus %}
       <li>
-        <a href="{% url 'menu_detail' menu.id %}">{{ menu.name }}</a>
+        <a class="btn" href="{% url 'menu_detail' menu.id %}">{{ menu.name }}</a>
         <ul>
           {% for recipe in menu.recipes.all %}
             <li>{{ recipe.name }}</li>
