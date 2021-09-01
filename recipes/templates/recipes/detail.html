@@ -5,32 +5,33 @@
 {% if recipe.servings %}
   <h3>Serves {{ recipe.servings }} people.</h3>
 {% endif %}
-
 <h4>INGREDIENTS</h4>
-{% if recipe.ingredients %}
+{% if recipe.stepsAndIngredients %}
 
-  <ul>
-    {% for ingredient in recipe.ingredients.all %}
-      <li>
-        {{ ingredient }}
-      </li>
-    {% endfor %}
-  </ul>
+<ul>
+  {% for item in stepsAndIngredients.ingredients %}
+  <li>
+    {{ item }}
+  </li>
+  {% endfor %}
+</ul>
 {% else %}
-  <p>No ingredients are assigned.</p>
+<p>No ingredients are assigned.</p>
 {% endif %}
 
 <h4>STEPS</h4>
-{% if recipe.steps %}
-  <ul>
-    <ol>
-      {% for step in recipe.steps.all %}
-        <li>{{ step }}</li>
-      {% endfor %}
-    </ol>
-  </ul>
+
+{% if recipe.stepsAndIngredients %}
+<ul>
+  <ol>
+    {% for step in stepsAndIngredients.steps %}
+    <li>{{ step }}</li>
+    {% endfor %}
+  </ol>
+</ul>
 {% else %}
-  <p>No steps are assigned. Toss them all together!</p>
+<p>No steps are assigned. Toss them all together!</p>
 {% endif %}
+
 
 {% endblock %}
