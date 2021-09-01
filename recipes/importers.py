@@ -92,7 +92,7 @@ class RecipeImporter:
             quantity = quantity,
             notes = notes
         )
-        self.r.stepsAndIngredients += "\"" + str(quantity) + ("" if str(ingUnit) == "count" else " " + str(ingUnit)) + " " + str(ingredient) + ("" if str(notes) == "None" else " " + str(notes)) + "\","
+        self.r.stepsAndIngredients += "\"" + str(quantity) + ("" if str(ingUnit) == "count" else (" " + str(ingUnit) + "s" if float(quantity) > 1 else " " + str(ingUnit))) + " " + str(ingredient) + ("" if str(notes) == "None" else " " + str(notes)) + "\","
         self.r.save()
         self.log.info("Added {}".format(ri))
 
