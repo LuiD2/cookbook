@@ -56,12 +56,21 @@ class RecipeImporter:
         self.r.save()
         self.log.info("Created recipe {}".format(self.r))
         counter = 1
+        self.r.stepsAndIngredients += "{\"steps\":["
         for s in data['steps']:
-            self.r.stepsAndIngredients += str(counter) + ". " + str(s)
+            if(len(data['steps']) == counter):
+                self.r.stepsAndIngredients += "\"" + str(s) + "\""
+            else:
+                self.r.stepsAndIngredients += "\"" + str(s) + "\","
             counter += 1
             self.r.save()
+
+        self.r.stepsAndIngredients += "], \"ingredients\":["
+        self.r.save()
         for i in data['ingredients']:
             self.import_ingredient(*i)
+        self.r.stepsAndIngredients = self.r.stepsAndIngredients.rstrip(self.r.stepsAndIngredients[-1]) + "]}"
+        self.r.save()
         for tagName in data.get('tags', []):
             tag, _ = RecipeTag.objects.get_or_create(name=tagName)
             self.r.tags.add(tag)
@@ -83,7 +92,7 @@ class RecipeImporter:
             quantity = quantity,
             notes = notes
         )
-        self.r.stepsAndIngredients += "|" + str(ingredient) + "|" + str(ingUnit) + "|" + str(quantity) + "|" + str(notes) 
+        self.r.stepsAndIngredients += "\"" + str(quantity) + " " + str(ingUnit) + " " + str(ingredient) + ("" if str(notes) == "None" else " " + str(notes)) + "\","
         self.r.save()
         self.log.info("Added {}".format(ri))
 

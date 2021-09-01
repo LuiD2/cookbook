@@ -4,7 +4,9 @@ from collections import defaultdict
 from math import ceil
 from textwrap import TextWrapper
 from django.urls import reverse
+from django.urls import reverse_lazy
 
+# action="/add_menu.html" method="post"
 # Create your models here.
 class Menu(models.Model):
     name = models.TextField()
@@ -37,7 +39,7 @@ class Menu(models.Model):
         return "<{} with {} recipes>".format(self.name, self.recipes.count())
 
     def get_absolute_url(self):
-        return reverse('menu-detail', kwargs={'pk': self.pk})
+        return reverse('menu_detail', kwargs={'pk': self.pk})
 
     def shopping_list(self, width=70):
         wrapper = TextWrapper(width=width)
@@ -55,6 +57,8 @@ class Menu(models.Model):
         print("ingredient,unit,quantity")
         for (ing, unit), qty in self.get_shopping_items().items():
             print("{},{},{}".format(ing, unit, qty))
+
+
 
     def get_shopping_items(self):
         "Returns a dict of shopping items"
