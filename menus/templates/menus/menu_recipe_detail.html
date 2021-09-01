@@ -3,18 +3,18 @@
 {% block content %}
 <h1>{{ recipe.name }}</h1>
 
-(Part of <a href="{% url 'menu_detail' menu.id %}">{{menu.name}}</a>)
+(Part of <a class="btn" href="{% url 'menu_detail' menu.id %}">{{menu.name}}</a>)
 
 {% if recipe.servings %}
   <h3>Serves {{ recipe.servings }} people.</h3>
 {% endif %}
 
 <h4>INGREDIENTS</h4>
-{% if recipe.ingredients %}
+{% if stepsAndIngredients.ingredients %}
   <ul>
-    {% for ingredient in recipe.ingredients.all %}
+    {%  for item in stepsAndIngredients.ingredients %}
       <li>
-        {{ ingredient }}
+        {{ item }}
       </li>
     {% endfor %}
   </ul>
@@ -23,11 +23,11 @@
 {% endif %}
 
 <h4>STEPS</h4>
-{% if recipe.steps %}
-  <ul>
+{% if stepsAndIngredients.steps %}
+<ul>
     <ol>
-      {% for step in recipe.steps.all %}
-        <li>{{ step }}</li>
+      {% for step in stepsAndIngredients.steps %}
+      <li>{{ step }}</li>
       {% endfor %}
     </ol>
   </ul>
