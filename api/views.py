@@ -30,7 +30,5 @@ def menu_api(request, id = 0):
         if menu_serializer.is_valid():
             menu_serializer.save()
             return JsonResponse("Updated successfully", safe=False)
-        
 
-        pass
 
