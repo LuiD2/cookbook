@@ -67,7 +67,11 @@ a{
     height: 60px;
 }
 .btn{
-    color: #ffffff
+    padding: 5px;
+    background: #304f77;
+    color: #5beef8e7;
+    border-radius:5px;
+    border:none;
 }
 
 /* || Headers */
