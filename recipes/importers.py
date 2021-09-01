@@ -59,9 +59,9 @@ class RecipeImporter:
         self.r.stepsAndIngredients += "{\"steps\":["
         for s in data['steps']:
             if(len(data['steps']) == counter):
-                self.r.stepsAndIngredients += "\"" + str(counter) + ". " + str(s) + "\""
+                self.r.stepsAndIngredients += "\"" + str(s) + "\""
             else:
-                self.r.stepsAndIngredients += "\"" + str(counter) + ". " + str(s) + "\","
+                self.r.stepsAndIngredients += "\"" + str(s) + "\","
             counter += 1
             self.r.save()
 
