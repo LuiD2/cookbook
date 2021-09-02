@@ -18,6 +18,7 @@ from django.urls import path
 from recipes import views as recipe_views
 from menus import views as menu_views
 from cookbook import views as cookbook_views
+from django.conf.urls import url, include
 
 urlpatterns = [
     path('', cookbook_views.HomeView.as_view(), name='home'),
@@ -29,6 +30,6 @@ urlpatterns = [
     path('cookbook/menus/<int:pk>', menu_views.DetailView.as_view(), name='menu_detail'),
     path('cookbook/menus/<int:menuID>/recipes/<int:recipeID>', menu_views.MenuRecipeDetailView.as_view(), name='menu_recipe_detail'),
     path('cookbook/menus/addmenu', menu_views.MenuCreateView.as_view(), name='add_menu'),
-    
-    path('cookbook/menus/<int:menuID>/shop', menu_views.ShoppingDetailView.as_view(), name='shopping')
+    path('cookbook/menus/<int:menuID>/shop', menu_views.ShoppingDetailView.as_view(), name='shopping'),
+    url(r'^', include('api.urls'))
 ]
