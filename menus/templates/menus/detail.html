@@ -1,16 +1,17 @@
 {% extends 'cookbook/base.html' %}
 {% block head %}
-
+<title> Menu: {{menu.name}} </title>
 {% endblock %}
 {% block content %}
 
 <h1>{{ menu.name }}</h1>
+<h2><a class="btn" href="{% url 'shopping' menu.id%}">Shop for these ingredients</a></h2>
 {% if menu.recipes %}
   <ul>
     {% for recipe in menu.recipes.all %}
       <li>
         <p>
-          <a href="{% url 'menu_recipe_detail' menu.id recipe.id %}">{{ recipe.name }}</a>, <strong>{{ recipe.servings }} servings</strong>
+          <a class="btn" href="{% url 'menu_recipe_detail' menu.id recipe.id %}">{{ recipe.name }}, <strong>{{ recipe.servings }} servings</strong></a>
         </p>
       </li>
     {% endfor %}
