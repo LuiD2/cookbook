@@ -39,7 +39,26 @@ class MenuRecipeDetailView(generic.DetailView):
         
         return context
 
+class ShoppingDetailView(generic.DetailView):
+    model = Menu
+    template_name = 'menus/shopping.html'
+    
+    def get_object(self):
+        try:
+            self.menu = Menu.objects.get(pk=self.kwargs['menuID'])
+            return self.menu
+        except (Menu.DoesNotExist):
+            raise Http404("Sorry, couldn't find it.")
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['menu'] = self.menu
+        item = self.menu.recipes.all()
+        context['ingredients'] = list()
+        for thing in item:
+            print(json.loads(thing.stepsAndIngredients)['ingredients'])
+            context['ingredients'] += json.loads(thing.stepsAndIngredients)['ingredients']
+        return context
 
 class MenuCreateView(CreateView):
     template_name = 'menus/add_menu.html'

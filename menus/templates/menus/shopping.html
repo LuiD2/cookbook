@@ -1,0 +1,19 @@
+{% extends 'cookbook/base.html' %}
+{% block head %}
+<title>Shopping for {{menu.name}}</title>
+{% endblock %}
+{% block content %}
+
+<h1>Shopping for: {{ menu.name }}</h1>
+{% if menu.recipes %}
+  <ul>
+    {% for ingred in ingredients %}
+    <li>
+        <p>{{ ingred }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No recipes are assigned.</p>
+{% endif %}
+{% endblock %}
